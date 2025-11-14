@@ -1,6 +1,6 @@
 @import "./components/PaletteCard.css";
 @import "./components/Background.css";
-@import "./app.css";
+@import "./App.css";
 
 :root {
     /* valeurs par défaut, remplacées par applyTheme() */
