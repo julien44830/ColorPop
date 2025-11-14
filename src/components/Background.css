@@ -1,0 +1,221 @@
+/* commentaire en français : conteneur du fond, derrière tout le reste */
+.bg-decor {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+
+    /* le fond suit la couleur principale du thème */
+    background-color: var(--color-bg);
+
+    /* transition douce quand le thème change */
+    transition: background-color 350ms ease;
+}
+
+.bg-shape {
+    position: absolute;
+    filter: blur(0px);
+    opacity: 0.9;
+
+    /* commentaire en français : transition des couleurs et de la transform au changement de thème */
+    transition: background-color 450ms ease, border-color 450ms ease,
+        transform 450ms ease;
+}
+
+/* cercle (couleur 1) */
+.bg-circle {
+    width: 320px;
+    height: 320px;
+    border-radius: 999px;
+    background-color: var(--theme-color-1);
+    top: -120px;
+    left: -80px;
+}
+
+/* rectangle arrondi (couleur 2) */
+.bg-rectangle {
+    width: 480px;
+    height: 220px;
+    border-radius: 120px;
+    background-color: var(--theme-color-2);
+    bottom: -120px;
+    right: -160px;
+}
+
+/* carré (couleur 3) */
+.bg-square {
+    width: 300px;
+    height: 300px;
+    background-color: var(--theme-color-3);
+    top: 120px;
+    right: 18%;
+    /* transform: rotate(6deg); */
+    /* commentaire en français : on active l’animation de morphing */
+    animation: morph-formes 6s ease-in-out infinite;
+    /* optionnel pour optimiser le rendu */
+    will-change: clip-path, transform;
+    /* Animation C : toujours active */
+}
+
+.bg-square.animate-once {
+    animation: pulseTheme 600ms ease forwards, float 8s ease-in-out infinite;
+}
+
+.shape-wrapper {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 120px;
+    right: 18%;
+
+    /* le morphing se fait ici */
+    animation: morph-formes 6s ease-in-out infinite;
+    will-change: clip-path;
+}
+/* toutes les formes flottent en continu */
+.bg-shape {
+    position: absolute;
+    filter: blur(0px);
+    opacity: 0.9;
+}
+
+.shape-inner {
+    width: 100%;
+    height: 100%;
+    background-color: var(--theme-color-3);
+
+    /* arrondis partout */
+    border-radius: 50%;
+
+    /* pour lisser les bords */
+    overflow: hidden;
+
+    /* animation continue (flottement) */
+    animation: float 8s ease-in-out infinite;
+}
+
+.bg-shape.floating {
+    animation: float 8s ease-in-out infinite;
+}
+
+.bg-shape.move {
+    animation: move 8s ease-in-out infinite;
+}
+
+/* mouvement continu */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(60deg);
+    }
+    50% {
+        transform: translateX(-12px) rotate(-60deg);
+    }
+    100% {
+        transform: translateY(0) rotate(60deg);
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+/* petit zoom / rotation pour le changement de thème */
+@keyframes pulseTheme {
+    0% {
+        transform: scale(0.94) rotate(4deg);
+        opacity: 0.7;
+    }
+    60% {
+        transform: scale(1.06) rotate(7deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(6deg);
+        opacity: 1;
+    }
+}
+
+@keyframes morph-formes {
+    /* carré (5 points dont un doublé) */
+    0% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+    }
+
+    /* triangle */
+    33% {
+        clip-path: polygon(50% 0%, 50% 0%, 100% 100%, 0% 100%, 0% 100%);
+    }
+
+    /* pentagone */
+    66% {
+        clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    }
+
+    /* retour carré */
+    100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+    }
+}
+
+/* triangle (couleur 4) */
+.bg-triangle {
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 220px solid var(--theme-color-5);
+    bottom: -40px;
+    left: 10%;
+    transform: rotate(-4deg);
+}
+
+/* commentaire en français : SVG positionné comme les autres formes */
+.bg-morph {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: 120px;
+    right: 18%;
+
+    /* commentaire en français : mouvement continu (rotation + flottement) */
+    animation: blob-float 12s ease-in-out infinite;
+    /* filter: drop-shadow(0 18px 40px var(--theme-color-3)); */
+}
+
+.bg-morph.rotatation {
+    animation: rotatation 20s ease-in-out infinite;
+}
+
+@keyframes rotatation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* animation continue sur le transform */
+@keyframes blob-float {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(-15px, -10px, 0) rotate(8deg);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+}

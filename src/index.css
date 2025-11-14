@@ -1,0 +1,19 @@
+@import "./components/PaletteCard.css";
+@import "./components/Background.css";
+@import "./app.css";
+
+:root {
+    /* valeurs par défaut, remplacées par applyTheme() */
+    --color-accent: #df3079;
+    --color-accent-soft: rgba(223, 48, 121, 0.18);
+    --color-bg: #fff7f9;
+    --color-text: #1b0b15;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: system-ui, sans-serif;
+
+    transition: background-color 1000ms ease, color 300ms ease;
+}

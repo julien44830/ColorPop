@@ -1,0 +1,27 @@
+.copied-badge {
+    position: absolute;
+    bottom: -18px;
+    font-size: 1rem;
+    color: var(--text);
+    opacity: 0;
+    animation: fadeCopy 1s ease forwards;
+    background-color: var(--color-accent);
+    padding: 0.2rem;
+    border-radius: 15px;
+    white-space: nowrap;
+}
+
+@keyframes fadeCopy {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(10);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+}
