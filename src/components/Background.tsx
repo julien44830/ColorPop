@@ -1,7 +1,6 @@
 // Background.tsx
 import { useEffect, useRef } from "react";
 import { MorphShape } from "./MorphShape";
-import "./background.css";
 
 export function Background() {
     // ref vers le conteneur du background
