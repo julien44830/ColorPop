@@ -44,7 +44,10 @@ export function Background() {
             <div className="bg-shape bg-circle" />
             <div className="bg-shape bg-rectangle move" />
             <MorphShape />
+            <div className="bg-diagonal" />
             <div className="bg-shape bg-triangle floating" />
+            <div className="bg-plus" />
+            <figure className="ball bubble"></figure>
         </div>
     );
 }

@@ -18,13 +18,26 @@ export function ThemeCard({ theme, onSelect }: ThemeCardProps) {
         "--card-shadow": "rgba(0,0,0,0.12)",
     } as React.CSSProperties;
 
-    // ⬇️ copie dans le presse-papier
+    // commentaire en français : style du bouton en fonction du thème
+    const buttonStyle: React.CSSProperties = {
+        backgroundColor: theme.accent,
+        color: getContrastColor(theme.accent),
+        border: "none",
+        borderRadius: "12px",
+        padding: "0.35rem 0.9rem",
+        marginTop: "0.9rem",
+        cursor: "pointer",
+        fontSize: "0.9rem",
+        fontWeight: 500,
+        boxShadow: "0 6px 14px rgba(0,0,0,0.18)",
+        // légère transparence si tu veux garder l'effet "verre"
+        // backgroundColor: theme.accent + "cc" // si tu veux bidouiller en hexa
+    };
+
     const copyColor = async (hex: string) => {
         try {
             await navigator.clipboard.writeText(hex);
             setCopiedColor(hex);
-
-            // efface l’indication après 1 seconde
             setTimeout(() => setCopiedColor(null), 1000);
         } catch (err) {
             console.error("Impossible de copier :", err);
@@ -53,8 +66,6 @@ export function ThemeCard({ theme, onSelect }: ThemeCardProps) {
                         title="Clique pour copier"
                     >
                         <p>{color}</p>
-
-                        {/* petit feedback “Copié !” */}
                         {copiedColor === color && (
                             <span className="copied-badge">Copié !</span>
                         )}
@@ -62,7 +73,13 @@ export function ThemeCard({ theme, onSelect }: ThemeCardProps) {
                 ))}
             </div>
 
-            <button onClick={onSelect}>Tester</button>
+            {/* commentaire en français : bouton dont le texte s'adapte au thème */}
+            <button
+                onClick={onSelect}
+                style={buttonStyle}
+            >
+                Tester
+            </button>
         </div>
     );
 }
