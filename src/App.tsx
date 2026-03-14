@@ -8,13 +8,17 @@ import type { Theme } from "./types/types";
 import { buildThemeFromBaseHex } from "./utils/dynamicTheme";
 import { getContrastColor } from "./utils/colorUtils";
 import { Background } from "./components/Background";
+import { Panel } from "./components/Panel";
 
 function App() {
     const [baseHex, setBaseHex] = useState("#df3079");
     const [generatedPalette, setGeneratedPalette] = useState<string[]>(
-        PRESET_THEMES[2].palette
+        PRESET_THEMES[2].palette,
     );
     const [copiedColor, setCopiedColor] = useState<string | null>(null);
+
+    const [displayPanel, setDisplayPanel] = useState<boolean>(true);
+    console.log("%c⧭", "color: #ff0000", displayPanel);
 
     // thème par défaut au chargement
     useEffect(() => {
@@ -51,8 +55,12 @@ function App() {
         <>
             <Background />
             <main className="app">
-                {/* section : carte qui affiche la palette générée */}
-                <div className="palette-card-container ">
+                {/* section : carte qui affiche la palette générée en-tête de la page */}
+                <div
+                    className={`palette-card-container ${
+                        displayPanel ? "palette-card-container-open" : ""
+                    }`}
+                >
                     <div className="palette-card">
                         <form
                             onSubmit={handleSubmit}
@@ -107,12 +115,29 @@ function App() {
                             ))}
                         </div>
                     </div>
+                    <button
+                        className="palette-card-button-test button"
+                        onClick={() => setDisplayPanel(!displayPanel)}
+                    >
+                        {displayPanel
+                            ? " caché l'exemple"
+                            : " afficher l'exemple"}
+                    </button>
                 </div>
-                {/* <section className="theme-card">
-                </section> */}
+
+                {/* section className="dashboard" */}
+
+                <section>
+                    <Panel displayPanel={displayPanel} />
+                </section>
 
                 {/* section : thèmes prédéfinis */}
-                <section className="preset-themes">
+
+                <section
+                    className={`preset-themes ${
+                        displayPanel ? "preset-themes-down" : ""
+                    }`}
+                >
                     <h1>Thèmes prêts à l'emploi</h1>
                     <div className="preset-flex">
                         {PRESET_THEMES.map((theme: Theme) => (

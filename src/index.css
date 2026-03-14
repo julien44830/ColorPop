@@ -1,6 +1,7 @@
 @import "./components/PaletteCard.css";
 @import "./App.css";
 @import "./components/Background.css";
+@import "./components/Panel.css";
 
 :root {
     /* valeurs par défaut, remplacées par applyTheme() */
@@ -15,5 +16,7 @@ body {
     color: var(--color-text);
     font-family: system-ui, sans-serif;
 
-    transition: background-color 1000ms ease, color 300ms ease;
+    transition:
+        background-color 1000ms ease,
+        color 300ms ease;
 }

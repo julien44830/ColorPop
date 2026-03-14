@@ -1,0 +1,31 @@
+.test-panel-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease;
+}
+
+.test-panel-wrapper-open {
+    max-height: 50vh;
+}
+
+.test-panel {
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    height: 40vh;
+    background-color: var(--color-bg);
+    padding: 2rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 15px;
+
+    opacity: 0;
+    transform: translateY(-30px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.test-panel-wrapper-open .test-panel {
+    opacity: 1;
+    transform: translateY(0);
+}
