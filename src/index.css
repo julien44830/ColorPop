@@ -2,6 +2,7 @@
 @import "./App.css";
 @import "./components/Background.css";
 @import "./components/Panel.css";
+@import "./components/Dashboard.css";
 
 :root {
     /* valeurs par défaut, remplacées par applyTheme() */
