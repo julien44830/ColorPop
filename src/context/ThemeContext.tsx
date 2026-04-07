@@ -21,7 +21,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         bg: "oklch(98% 0.02 250)",
         text: "oklch(20% 0.03 250)",
     });
-    console.log("%c⧭", "color: #ff0000", theme);
 
     // 🧠 met aussi à jour les variables CSS globales
     const setThemeFromPalette = (palette: ThemeColors) => {

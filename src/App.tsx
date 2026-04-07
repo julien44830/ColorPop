@@ -16,10 +16,8 @@ function App() {
         PRESET_THEMES[2].palette,
     );
     const [copiedColor, setCopiedColor] = useState<string | null>(null);
-    console.log("%c⧭", "color: #00e600", copiedColor);
 
     const [displayPanel, setDisplayPanel] = useState<boolean>(false);
-    console.log("%c⧭", "color: #ff0000", displayPanel);
 
     // thème par défaut au chargement
     useEffect(() => {

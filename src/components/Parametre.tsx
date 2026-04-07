@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Spinner from "./Spinner";
+import Modale from "./Modale";
 
 export default function Parametre() {
     const [spinnerOn, setSpinnerOn] = useState(false);
@@ -16,11 +17,22 @@ export default function Parametre() {
         spinner();
     };
 
+    const [modaleOne, setModaleOne] = useState(false);
+
     return (
         <section className="parametre">
             {spinnerOn && <Spinner />}
+            {modaleOne && (
+                <Modale
+                    setModaleOne={setModaleOne}
+                    modaleOne={modaleOne}
+                    handleClick={handleClick}
+                />
+            )}
             <h3>Parametre</h3>
-            <ul className={`ul-parametre ${spinnerOn ? "filter" : ""}`}>
+            <ul
+                className={`ul-parametre ${spinnerOn || modaleOne ? "filter" : ""}`}
+            >
                 <li className="li-parametre">
                     <div className="checkbox-wrapper-2">
                         <p>Paramètre de cookies</p>
@@ -67,7 +79,7 @@ export default function Parametre() {
                         <p className="alerte">Suppression du compte</p>
 
                         <button
-                            onClick={handleClick}
+                            onClick={() => setModaleOne(!modaleOne)}
                             className="alerte alerte-btn"
                         >
                             action irréversible
