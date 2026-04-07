@@ -18,7 +18,7 @@ function App() {
     const [copiedColor, setCopiedColor] = useState<string | null>(null);
     console.log("%c⧭", "color: #00e600", copiedColor);
 
-    const [displayPanel, setDisplayPanel] = useState<boolean>(true);
+    const [displayPanel, setDisplayPanel] = useState<boolean>(false);
     console.log("%c⧭", "color: #ff0000", displayPanel);
 
     // thème par défaut au chargement

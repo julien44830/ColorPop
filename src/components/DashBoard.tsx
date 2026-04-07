@@ -1,8 +1,11 @@
 import { useState } from "react";
+import Evenement from "./Evenement";
+import Analyse from "./Analyse";
+import Parametre from "./Parametre";
+import Aide from "./Aide";
 
 export default function DashBoard() {
     const [buttonNameState, setButtonNameState] = useState("evenement");
-    console.log("%c⧭", "color: #00a3cc", buttonNameState);
 
     return (
         <section className="dashboard">
@@ -57,7 +60,10 @@ export default function DashBoard() {
                 </article>
                 <div>
                     <article className="dashboard-article">
-                        <h2>{buttonNameState}</h2>
+                        {buttonNameState === "evenement" && <Evenement />}
+                        {buttonNameState === "analyse" && <Analyse />}
+                        {buttonNameState === "parametre" && <Parametre />}
+                        {buttonNameState === "aide" && <Aide />}
                     </article>
                 </div>
             </div>

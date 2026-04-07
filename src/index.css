@@ -1,8 +1,9 @@
-@import "./components/PaletteCard.css";
+@import "./styles/PaletteCard.css";
 @import "./App.css";
-@import "./components/Background.css";
-@import "./components/Panel.css";
-@import "./components/Dashboard.css";
+@import "./styles/Background.css";
+@import "./styles/Panel.css";
+@import "./styles/Dashboard.css";
+@import "./styles/Parametre.css";
 
 :root {
     /* valeurs par défaut, remplacées par applyTheme() */
@@ -10,6 +11,7 @@
     --color-accent-soft: rgba(223, 48, 121, 0.18);
     --color-bg: #fff7f9;
     --color-text: #1b0b15;
+    --color-alert: #ff0000;
 }
 
 body {
