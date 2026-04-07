@@ -84,3 +84,16 @@ ul {
     color: var(--color-alert) !important;
     font-weight: bold;
 }
+
+.alerte-btn {
+    border: 1px solid var(--color-alert);
+}
+
+.alerte-btn:hover {
+    background-color: var(--color-alert);
+    color: black !important;
+}
+
+.filter {
+    filter: blur(5px);
+}
